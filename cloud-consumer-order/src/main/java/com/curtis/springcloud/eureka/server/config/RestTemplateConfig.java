@@ -1,4 +1,4 @@
-package com.curtis.springcloud.order.config;
+package com.curtis.springcloud.eureka.server.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.curtis.springcloud.order.common;
+package com.curtis.springcloud.eureka.server.common;
 
 public class CommonResult<T> {
 

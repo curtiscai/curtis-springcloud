@@ -1,4 +1,4 @@
-package com.curtis.springcloud.order.entity;
+package com.curtis.springcloud.eureka.server.entity;
 
 public class Payment {
     private Long id;

@@ -1,7 +1,7 @@
-package com.curtis.springcloud.order.controller;
+package com.curtis.springcloud.eureka.server.controller;
 
-import com.curtis.springcloud.order.common.CommonResult;
-import com.curtis.springcloud.order.entity.Payment;
+import com.curtis.springcloud.eureka.server.common.CommonResult;
+import com.curtis.springcloud.eureka.server.entity.Payment;
 import com.google.common.collect.Maps;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
