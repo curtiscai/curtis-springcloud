@@ -1,0 +1,14 @@
+server:
+  port: 7002
+
+eureka:
+  instance:
+    hostname: node2
+#    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    # false表示不像注册中心注册自己
+    register-with-eureka: false
+    # false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://node1:7001/eureka/
