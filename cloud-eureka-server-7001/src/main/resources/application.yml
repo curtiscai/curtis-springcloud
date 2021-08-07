@@ -12,3 +12,9 @@ eureka:
     fetch-registry: false
     serviceUrl:
       defaultZone: http://node2:7002/eureka/
+
+  server:
+    # 关闭自我保护机制，保证不可用的服务及时剔除
+    enable-self-preservation: false
+    # 清理间隔（单位毫秒）
+    eviction-interval-timer-in-ms: 2000

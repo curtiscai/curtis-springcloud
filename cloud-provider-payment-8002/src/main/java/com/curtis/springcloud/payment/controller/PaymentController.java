@@ -31,7 +31,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/payment/{id}")
-    public CommonResult createPayment(@PathVariable Long id) {
+    public CommonResult getPaymentById(@PathVariable Long id) {
         LOGGER.info("receive request");
         Payment paymentById = paymentService.getPaymentById(id);
         return CommonResult.success(200, "query success, server port: "+ serverPort, paymentById);
