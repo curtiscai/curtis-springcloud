@@ -1,17 +1,23 @@
+spring:
+  application:
+    name: eureka-server
+
 server:
   port: 7001
 
 eureka:
   instance:
     hostname: node1
-#    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  #    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
-    # false表示不像注册中心注册自己
+    # 服务本身就是注册中心，需要设置为false取消注册（不设置默认true）
     register-with-eureka: false
-    # false
+    # 设置不拉取服务注册信息
     fetch-registry: false
     serviceUrl:
-      defaultZone: http://node2:7002/eureka/
+      defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
+      # 仅配置其他Eureka服务也可以
+  #      defaultZone: http://node2:7002/eureka
 
   server:
     # 关闭自我保护机制，保证不可用的服务及时剔除
