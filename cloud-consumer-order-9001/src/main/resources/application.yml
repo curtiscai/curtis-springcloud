@@ -18,3 +18,4 @@ eureka:
     cache-refresh-executor-exponential-back-off-bound: 10
     serviceUrl:
       defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
+

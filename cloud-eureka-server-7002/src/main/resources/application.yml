@@ -11,7 +11,7 @@ eureka:
   #    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
     # 服务本身就是注册中心，需要设置为false取消注册（不设置默认true）
-    register-with-eureka: false
+    register-with-eureka: true
     # 设置不拉取服务注册信息
     fetch-registry: false
     serviceUrl:
