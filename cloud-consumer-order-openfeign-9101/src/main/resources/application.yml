@@ -13,7 +13,3 @@ eureka:
     fetch-registry: true
     serviceUrl:
       defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
-ribbon:
-  ReadTimeout: 3000
-  ConnectTimeout: 3000
-  MaxAutoRetries: 0

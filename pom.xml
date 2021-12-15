@@ -15,8 +15,9 @@
         <module>cloud-provider-payment-8001</module>
         <module>cloud-provider-payment-8002</module>
         <module>cloud-consumer-order</module>
-        <module>cloud-consumer-order-9001</module>
+        <module>cloud-consumer-order-ribbon-9001</module>
         <module>cloud-eureka-server</module>
+        <module>cloud-consumer-order-hystrix-9101</module>
     </modules>
 
     <packaging>pom</packaging>
