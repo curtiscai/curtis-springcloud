@@ -19,11 +19,11 @@ public class TimeoutController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TimeoutController.class);
 
 
-    @GetMapping(value = "/timeout/{second}")
-    public CommonResult timeout(@PathVariable("second") Integer second) {
+    @GetMapping(value = "/timeout/{millisecond}")
+    public CommonResult timeout(@PathVariable("millisecond") Integer millisecond) {
         LOGGER.info("receive request");
         try {
-            TimeUnit.SECONDS.sleep(second);
+            TimeUnit.MILLISECONDS.sleep(millisecond);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

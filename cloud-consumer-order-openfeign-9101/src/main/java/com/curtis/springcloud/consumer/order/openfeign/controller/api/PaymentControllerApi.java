@@ -24,6 +24,9 @@ public interface PaymentControllerApi {
     @GetMapping(value = "/payment/{id}")
     public CommonResult getPaymentById(@PathVariable(value = "id") Long id);
 
-    @GetMapping(value = "/timeout/{second}")
-    public CommonResult timeout(@PathVariable("second") Integer second);
+    @GetMapping(value = "/timeout/{millisecond}")
+    public CommonResult timeout(@PathVariable("millisecond") Integer millisecond);
+
+    @GetMapping(value = "/exception/{param}")
+    public CommonResult exception(@PathVariable String param);
 }

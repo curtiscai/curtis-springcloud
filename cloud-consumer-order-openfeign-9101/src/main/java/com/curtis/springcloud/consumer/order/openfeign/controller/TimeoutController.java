@@ -8,20 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
-public class OrderController {
+public class TimeoutController {
 
     @Resource
     private PaymentControllerApi paymentControllerApi;
 
-    @PostMapping(value = "/payment")
-    public CommonResult createPayment(@RequestBody Payment payment) {
-        CommonResult commonResult = paymentControllerApi.createPayment(payment);
-        return commonResult;
-    }
-
-    @GetMapping(value = "/payment/{id}")
-    public CommonResult getPaymentById(@PathVariable Long id) {
-        CommonResult commonResult = paymentControllerApi.getPaymentById(id);
+    @GetMapping(value = "/timeout/{millisecond}")
+    public CommonResult timeout(@PathVariable("millisecond") Integer millisecond) {
+        CommonResult commonResult = paymentControllerApi.timeout(millisecond);
         return commonResult;
     }
 }

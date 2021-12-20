@@ -22,12 +22,18 @@ eureka:
     # 当服务获取超时后，最大尝试次数，默认10次
     cache-refresh-executor-exponential-back-off-bound: 10
     serviceUrl:
+      # 这里可以只配部分Eureka治理中心地址，注册信息会互相拉取，这里只配置一个治理中心，在其他治理中心中也能拉取到服务注册信息
       defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
+#      defaultZone: http://node1:7001/eureka
 
 # 设置ribbon调用超时时间，但是没有生效，原因待分析
+#CLOUD-PROVIDER-PAYMENT-SERVICE:
+#  ribbon:
+#    ConnectTimeout: 3
+#    ReadTimeout: 3
 #ribbon:
-#  connect-timeout: 1000
-#  read-timeout: 1000
+#  ConnectTimeout: 3000
+#  ReadTimeout: 3000
 ####################################################################################################
 ####################################### 单机版服务消费者配置 结束 ##################################
 ####################################################################################################

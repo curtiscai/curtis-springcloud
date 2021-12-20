@@ -8,20 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
-public class OrderController {
+public class ExceptionController {
 
     @Resource
     private PaymentControllerApi paymentControllerApi;
 
-    @PostMapping(value = "/payment")
-    public CommonResult createPayment(@RequestBody Payment payment) {
-        CommonResult commonResult = paymentControllerApi.createPayment(payment);
-        return commonResult;
-    }
-
-    @GetMapping(value = "/payment/{id}")
-    public CommonResult getPaymentById(@PathVariable Long id) {
-        CommonResult commonResult = paymentControllerApi.getPaymentById(id);
+    @GetMapping(value = "/exception/{param}")
+    public CommonResult exception(@PathVariable String param) {
+        CommonResult commonResult = paymentControllerApi.exception(param);
         return commonResult;
     }
 }

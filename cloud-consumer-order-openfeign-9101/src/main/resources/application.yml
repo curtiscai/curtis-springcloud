@@ -1,18 +1,26 @@
+####################################################################################################
+####################################### 单机版服务消费者配置 开始 ##################################
+####################################################################################################
 server:
+  # 配置服务端口号
   port: 9101
 
 spring:
   application:
+    # 配置Spring应用名称，也是微服务的名称，SpringCloud中微服务可以有多个实例，实例通过该名称进行分组
     name: cloud-consumer-order-openfeign-service
 
 eureka:
   client:
-    # true表示将自己注册进EurekaServer，默认true
-    register-with-eureka: true
-    # 是否从EurekaServer抓取已有的注册信息，默认为true，单节点无所谓，集群必须设置为true才能配合Ribbon使用负载均衡
+    # 配置是否向Eureka服务治理中心进行注册，消费端可以不需要进行注册（不设置默认true）
+    register-with-eureka: false
+    # 配置是否从服务治理中心拉取服务注册信息，通常只有消费端需要设置为true（不设置默认true）
+    # 服务调用方需要设置为true，否则抛出java.lang.IllegalStateException: No instances available for CLOUD-PROVIDER-PAYMENT-SERVICE异常
     fetch-registry: true
     serviceUrl:
+      # 这里可以只配部分Eureka治理中心地址，注册信息会互相拉取，这里只配置一个治理中心，在其他治理中心中也能拉取到服务注册信息
       defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
+#      defaultZone: http://node1:7001/eureka
 
 
 # 超时控制，两种方式都生效，默认1秒，两种都配置的话实测feign配置生效或者优先级高
@@ -26,3 +34,6 @@ feign:
       default:
         read-timeout: 3000
         connect-timeout: 3000
+####################################################################################################
+####################################### 单机版服务消费者配置 结束 ##################################
+####################################################################################################

@@ -25,9 +25,9 @@ public class TimeoutController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TimeoutController.class);
 
 
-    @GetMapping(value = "/timeout/{second}")
-    public CommonResult timeout(@PathVariable("second") Integer second) {
-        CommonResult commonResult = restTemplate.getForObject(PAYMENT_SERVICE_URL + "/timeout/" + second, CommonResult.class);
+    @GetMapping(value = "/timeout/{millisecond}")
+    public CommonResult timeout(@PathVariable("millisecond") Integer millisecond) {
+        CommonResult commonResult = restTemplate.getForObject(PAYMENT_SERVICE_URL + "/timeout/" + millisecond, CommonResult.class);
         return commonResult;
     }
 }

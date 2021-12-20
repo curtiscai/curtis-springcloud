@@ -8,7 +8,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 // 开启Feign功能
 @EnableFeignClients
-@EnableEurekaClient
+// 使用@EnableDiscoveryClient或者@EnableEurekaClient都可以启用Eureka服务发现，H版中不需要该注解也可以启用Eureka服务发现
+// @EnableDiscoveryClient
+// @EnableEurekaClient
 @SpringBootApplication
 public class CloudConsumerOrderOpenFeign9101Application {
 
