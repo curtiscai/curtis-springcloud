@@ -1,8 +1,10 @@
 package com.curtis.springcloud.consumer.order.hystrix.controller;
 
 import com.curtis.springcloud.consumer.order.hystrix.common.CommonResult;
+import com.curtis.springcloud.consumer.order.hystrix.controller.api.PaymentControllerApi;
 import com.curtis.springcloud.consumer.order.hystrix.entity.Payment;
 import com.google.common.collect.Maps;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,26 +14,41 @@ import java.util.Map;
 @RestController
 public class OrderController {
 
-    // @LoadBalanced
     @Resource
-    private RestTemplate restTemplate;
-
-    // private static final String PAYMENT_SERVICE_URL = "http://localhost:8001";
-    // 这里服务名称与大小写无关，均可
-    private static final String PAYMENT_SERVICE_URL = "http://CLOUD-PROVIDER-PAYMENT-SERVICE";
-    // private static final String PAYMENT_SERVICE_URL = "http://cloud-provider-payment-service";
+    private PaymentControllerApi paymentControllerApi;
 
     @PostMapping(value = "/payment")
     public CommonResult createPayment(@RequestBody Payment payment) {
-        CommonResult commonResult = restTemplate.postForObject(PAYMENT_SERVICE_URL + "/payment", payment, CommonResult.class);
+        CommonResult commonResult = paymentControllerApi.createPayment(payment);
         return commonResult;
     }
 
     @GetMapping(value = "/payment/{id}")
     public CommonResult getPaymentById(@PathVariable Long id) {
-        Map<String, Object> uriVariables = Maps.newHashMap();
-        uriVariables.put("id", id);
-        CommonResult commonResult = restTemplate.getForObject(PAYMENT_SERVICE_URL + "/payment/{id}", CommonResult.class, uriVariables);
+        CommonResult commonResult = paymentControllerApi.getPaymentById(id);
         return commonResult;
+    }
+
+    @HystrixCommand(fallbackMethod = "timeoutFallback")
+    @GetMapping(value = "/timeout/{second}")
+    public CommonResult timeout(@PathVariable("second") Integer second) {
+        CommonResult commonResult = paymentControllerApi.timeout(second);
+        return commonResult;
+    }
+
+    public CommonResult timeoutFallback(Integer second) {
+        return CommonResult.success(200, "服务调用发生超时", null);
+    }
+
+    @HystrixCommand(fallbackMethod = "exceptionFallback")
+    @GetMapping(value = "/exception/{param}")
+    public CommonResult exception(@PathVariable String param) {
+        CommonResult commonResult = paymentControllerApi.exception(param);
+        return commonResult;
+    }
+
+    public CommonResult exceptionFallback(String param) {
+        return CommonResult.success(200, "服务调用发生异常", null);
+
     }
 }

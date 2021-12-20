@@ -9,7 +9,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cloud-consumer-order</artifactId>
+    <artifactId>cloud-consumer-order-ribbon</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -51,6 +51,4 @@
             <version>30.1-jre</version>
         </dependency>
     </dependencies>
-
-
 </project>

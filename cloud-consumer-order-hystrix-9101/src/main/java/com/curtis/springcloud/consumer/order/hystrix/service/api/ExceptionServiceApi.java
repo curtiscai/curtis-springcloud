@@ -1,7 +1,6 @@
 package com.curtis.springcloud.consumer.order.hystrix.service.api;
 
 import com.curtis.springcloud.consumer.order.hystrix.common.CommonResult;
-import com.curtis.springcloud.consumer.order.hystrix.controller.ExceptionController;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

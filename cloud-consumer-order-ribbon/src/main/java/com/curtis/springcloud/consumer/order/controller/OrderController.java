@@ -12,10 +12,14 @@ import java.util.Map;
 @RestController
 public class OrderController {
 
+    // @LoadBalanced
     @Resource
     private RestTemplate restTemplate;
 
-    private static final String PAYMENT_SERVICE_URL = "http://localhost:8000";
+    // private static final String PAYMENT_SERVICE_URL = "http://localhost:8001";
+    // 这里服务名称与大小写无关，均可
+    private static final String PAYMENT_SERVICE_URL = "http://CLOUD-PROVIDER-PAYMENT-SERVICE";
+    // private static final String PAYMENT_SERVICE_URL = "http://cloud-provider-payment-service";
 
     @PostMapping(value = "/payment")
     public CommonResult createPayment(@RequestBody Payment payment) {

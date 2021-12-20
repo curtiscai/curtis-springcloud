@@ -1,6 +1,7 @@
 package com.curtis.springcloud.provider.payment.controller;
 
 import com.curtis.springcloud.provider.payment.common.CommonResult;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,10 @@ public class ExceptionController {
     @GetMapping(value = "/exception/{param}")
     public CommonResult exception(@PathVariable String param) {
         LOGGER.info("receive request");
-        throw new RuntimeException("An exception occurs, server port: " + serverPort + ", The PathVariable Is " + param);
+        if (StringUtils.equalsIgnoreCase("error", param)) {
+            throw new RuntimeException("An exception occurs, server port: " + serverPort + ", The PathVariable Is " + param);
+        } else {
+            return CommonResult.success(200, "服务正常响应，响应端口是：" + serverPort, null);
+        }
     }
 }

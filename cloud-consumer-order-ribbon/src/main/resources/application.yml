@@ -3,7 +3,7 @@
 ####################################################################################################
 server:
   # 配置服务端口号
-  port: 9001
+  port: 9000
 
 spring:
   application:
@@ -14,19 +14,11 @@ eureka:
   client:
     # 配置是否向Eureka服务治理中心进行注册，消费端可以不需要进行注册（不设置默认true）
     register-with-eureka: false
-    # 配置是否从服务治理中心拉取服务注册信息，通常只有消费端需要设置为true（不设置默认true）
+    # 配置是否从服务治理中心拉取服务注册信息，消费端必须设置为true（不设置默认true）
     # 服务调用方需要设置为true，否则抛出java.lang.IllegalStateException: No instances available for CLOUD-PROVIDER-PAYMENT-SERVICE异常
     fetch-registry: true
-    # 检索服务实例清单的时间间隔（单位：秒），默认30秒
-    registry-fetch-interval-seconds: 30
-    # 当服务获取超时后，最大尝试次数，默认10次
-    cache-refresh-executor-exponential-back-off-bound: 10
     serviceUrl:
-      defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
-
-#ribbon:
-#  connect-timeout: 1000
-#  read-timeout: 1000
+      defaultZone: http://localhost:7000/eureka
 ####################################################################################################
 ####################################### 单机版服务消费者配置 结束 ##################################
 ####################################################################################################
