@@ -1,15 +1,12 @@
-package com.curtis.springcloud.consumer.order.hystrix.controller;
+package com.curtis.springcloud.consumer.order.openfeign.hystrix.controller;
 
-import com.curtis.springcloud.consumer.order.hystrix.common.CommonResult;
-import com.curtis.springcloud.consumer.order.hystrix.controller.api.PaymentControllerApi;
-import com.curtis.springcloud.consumer.order.hystrix.entity.Payment;
-import com.google.common.collect.Maps;
+import com.curtis.springcloud.consumer.order.openfeign.hystrix.common.CommonResult;
+import com.curtis.springcloud.consumer.order.openfeign.hystrix.controller.api.PaymentControllerApi;
+import com.curtis.springcloud.consumer.order.openfeign.hystrix.entity.Payment;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
-import java.util.Map;
 
 @RestController
 public class OrderController {
@@ -30,9 +27,9 @@ public class OrderController {
     }
 
     @HystrixCommand(fallbackMethod = "timeoutFallback")
-    @GetMapping(value = "/timeout/{second}")
-    public CommonResult timeout(@PathVariable("second") Integer second) {
-        CommonResult commonResult = paymentControllerApi.timeout(second);
+    @GetMapping(value = "/timeout/{millisecond}")
+    public CommonResult timeout(@PathVariable("millisecond") Integer millisecond) {
+        CommonResult commonResult = paymentControllerApi.timeout(millisecond);
         return commonResult;
     }
 

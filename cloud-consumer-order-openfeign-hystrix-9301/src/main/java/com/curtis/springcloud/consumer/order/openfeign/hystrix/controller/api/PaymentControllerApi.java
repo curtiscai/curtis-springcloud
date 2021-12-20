@@ -1,7 +1,7 @@
-package com.curtis.springcloud.consumer.order.hystrix.controller.api;
+package com.curtis.springcloud.consumer.order.openfeign.hystrix.controller.api;
 
-import com.curtis.springcloud.consumer.order.hystrix.common.CommonResult;
-import com.curtis.springcloud.consumer.order.hystrix.entity.Payment;
+import com.curtis.springcloud.consumer.order.openfeign.hystrix.common.CommonResult;
+import com.curtis.springcloud.consumer.order.openfeign.hystrix.entity.Payment;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +24,8 @@ public interface PaymentControllerApi {
     @GetMapping(value = "/payment/{id}")
     public CommonResult getPaymentById(@PathVariable(value = "id") Long id);
 
-    @GetMapping(value = "/timeout/{second}")
-    public CommonResult timeout(@PathVariable("second") Integer second);
+    @GetMapping(value = "/timeout/{millisecond}")
+    public CommonResult timeout(@PathVariable("millisecond") Integer millisecond);
 
     @GetMapping(value = "/exception/{param}")
     public CommonResult exception(@PathVariable("param") String param);
