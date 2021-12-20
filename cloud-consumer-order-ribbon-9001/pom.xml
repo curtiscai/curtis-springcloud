@@ -41,6 +41,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- 非必要依赖 开始 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -58,6 +59,7 @@
             <artifactId>guava</artifactId>
             <version>30.1-jre</version>
         </dependency>
+        <!-- 非必要依赖 结束 -->
     </dependencies>
 
 

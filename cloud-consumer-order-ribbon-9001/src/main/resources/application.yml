@@ -24,6 +24,7 @@ eureka:
     serviceUrl:
       defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
 
+# 设置ribbon调用超时时间，但是没有生效，原因待分析
 #ribbon:
 #  connect-timeout: 1000
 #  read-timeout: 1000

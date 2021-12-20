@@ -36,6 +36,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- 非必要依赖 开始 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -47,5 +48,6 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!-- 非必要依赖 结束 -->
     </dependencies>
 </project>
