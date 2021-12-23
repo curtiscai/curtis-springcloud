@@ -28,5 +28,5 @@ public interface PaymentControllerApi {
     public CommonResult timeout(@PathVariable("millisecond") Integer millisecond);
 
     @GetMapping(value = "/exception/{param}")
-    public CommonResult exception(@PathVariable String param);
+    public CommonResult exception(@PathVariable(value = "param") String param);
 }

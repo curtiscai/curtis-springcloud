@@ -13,7 +13,9 @@ spring:
 eureka:
   client:
     # 配置是否向Eureka服务治理中心进行注册，消费端可以不需要进行注册（不设置默认true）
-    register-with-eureka: false
+#    register-with-eureka: false
+    # 这里设置为true，是因为网关调用的话服务还是得注册到治理中心蔡可以
+    register-with-eureka: true
     # 配置是否从服务治理中心拉取服务注册信息，通常只有消费端需要设置为true（不设置默认true）
     # 服务调用方需要设置为true，否则抛出java.lang.IllegalStateException: No instances available for CLOUD-PROVIDER-PAYMENT-SERVICE异常
     fetch-registry: true

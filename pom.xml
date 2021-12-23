@@ -14,10 +14,13 @@
         <module>cloud-provider-payment</module>
         <module>cloud-provider-payment-8001</module>
         <module>cloud-provider-payment-8002</module>
-        <module>cloud-consumer-order</module>
+        <module>cloud-consumer-order-ribbon</module>
         <module>cloud-consumer-order-ribbon-9001</module>
         <module>cloud-eureka-server</module>
-        <module>cloud-consumer-order-hystrix-9101</module>
+        <module>cloud-consumer-order-openfeign-9101</module>
+        <module>cloud-consumer-order-openfeign-hystrix-9301</module>
+        <module>cloud-zuul-7101</module>
+        <module>cloud-zuul-7102</module>
     </modules>
 
     <packaging>pom</packaging>
