@@ -1,4 +1,4 @@
-package com.curtis.springcloud.server.zuul;
+package com.curtis.springcloud.server.gateway;
 
 
 import org.springframework.boot.SpringApplication;
@@ -11,9 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // @EnableDiscoveryClient
 // @EnableEurekaClient
 @SpringBootApplication
-public class CloudGateway7201Application {
+public class CloudServerGateway7201Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudGateway7201Application.class, args);
+        SpringApplication.run(CloudServerGateway7201Application.class, args);
     }
 }

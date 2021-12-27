@@ -3,12 +3,27 @@
 ####################################################################################################
 server:
   # 配置服务端口号
-  port: 7101
+  port: 7201
 
 spring:
   application:
     # 配置Spring应用名称，也是微服务的名称，SpringCloud中微服务可以有多个实例，实例通过该名称进行分组
-    name: zuul
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 默认false
+          enabled: true
+      routes:
+        # http://localhost:7201/order-service-route/payment/1 -> http://cloud-consumer-order-openfeign-service/payment/1
+        - id: order-service-route
+          uri: lb://cloud-consumer-order-openfeign-service
+          predicates:
+            - Path=/order-service-route/**
+          filters:
+            - StripPrefix=1
+#            - PrefixPath=/order-service-route
 
 eureka:
   client:
@@ -22,16 +37,6 @@ eureka:
 #      defaultZone: http://node2:7002/eureka
   instance:
     prefer-ip-address: true
-
-zuul:
-  routes:
-    order-service:
-      path: /order-api/**
-      service-id: cloud-consumer-order-openfeign-service
-    payment-service:
-      ## 访问http://localhost:7102/payment-api/payment/1相当于http://cloud-provider-payment-service/payment/1
-      path: /payment-api/**
-      service-id: cloud-provider-payment-service
 
 ####################################################################################################
 ####################################### 网关配置 结束 ##################################
