@@ -1,0 +1,38 @@
+####################################################################################################
+####################################### 网关配置 开始 ##################################
+####################################################################################################
+server:
+  # 配置服务端口号
+  port: 7102
+
+spring:
+  application:
+    # 配置Spring应用名称，也是微服务的名称，SpringCloud中微服务可以有多个实例，实例通过该名称进行分组
+    name: zuul
+
+eureka:
+  client:
+    # 配置是否向Eureka服务治理中心进行注册，生产端需要进行注册（不设置默认true）
+    register-with-eureka: true
+    # 配置是否从服务治理中心拉取服务注册信息，通常只有消费者需要设置为true（不设置默认true）
+    fetch-registry: true
+    serviceUrl:
+      # 这里可以只配部分Eureka治理中心地址，注册信息会互相拉取，这里只配置一个治理中心，在其他治理中心中也能拉取到服务注册信息
+      defaultZone: http://node1:7001/eureka,http://node2:7002/eureka
+  #      defaultZone: http://node2:7002/eureka
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    order-service:
+      path: /order-api/**
+      service-id: cloud-consumer-order-openfeign-service
+    payment-service:
+      ## 访问http://localhost:7102/payment-api/payment/1相当于http://cloud-provider-payment-service/payment/1
+      path: /payment-api/**
+      service-id: cloud-provider-payment-service
+
+####################################################################################################
+####################################### 网关配置 结束 ##################################
+####################################################################################################
